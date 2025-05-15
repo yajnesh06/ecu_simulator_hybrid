@@ -1,5 +1,5 @@
 
-```markdown
+
 # ECU Simulator Hybrid (C + Python)
 
 This project implements an ECU (Electronic Control Unit) simulator combining **C** and **Python** for efficient and modular design.  
