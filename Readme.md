@@ -1,94 +1,101 @@
 
 
-# ECU Simulator Hybrid (C + Python)
-
-This project implements an ECU (Electronic Control Unit) simulator combining **C** and **Python** for efficient and modular design.  
-The core ECU logic handling is implemented in C for performance, while the CAN bus communication is managed using Python with the `python-can` library.
-
 ---
 
-## Project Structure
+# ECU Simulator
 
-```
-
-ecu\_simulator\_hybrid/
-├── ecu/
-│   ├── ecu\_logic.c       # Core ECU logic implementation in C
-│   ├── ecu\_logic.h       # Header file for ECU logic functions
-│   └── libecu.so         # Shared library generated after compilation
-├── ecu\_wrapper.py        # Python ctypes wrapper to interface with C library
-├── main.py               # Python entry point: manages CAN bus communication and calls C functions
-├── Makefile              # Build instructions for compiling C code into a shared library
-README.md                 # This file
-
-````
+An Engine Control Unit (ECU) simulator that combines high-performance C logic with Python's flexibility for CAN communication. This hybrid design allows for efficient processing of CAN messages and easy extensibility.
 
 ---
 
 ## Features
 
-- Implements core ECU service logic (e.g., responding to OBD-II PID requests) in C
-- Uses Python for CAN bus interface with `python-can` library (`socketcan` backend)
-- Hybrid architecture for modularity and performance optimization
-- Logs CAN message processing and simulates realistic sensor values
+* **C-based ECU Logic**: Core ECU functionalities implemented in C for optimal performance.
+* **Python CAN Interface**: Python scripts handle CAN communication, interfacing seamlessly with the C logic.
+* **Modular Design**: Easily extend or modify ECU logic by updating the C code.
+* **Real-time Simulation**: Processes incoming CAN messages and responds appropriately, simulating real ECU behavior.
 
 ---
 
-## Requirements
+## Prerequisites
 
-- Python 3.x
-- `python-can` library (`pip install python-can`)
-- GCC (or compatible C compiler) for building the shared C library
-- Linux environment with `socketcan` support and configured `can0` interface (or modify accordingly)
+* **Python 3.x**
+* **C Compiler** (e.g., `gcc`)
+* **Python Packages**:
+
+  * `python-can`
+  * `ctypes` (standard library)
+* **CAN Interface**:
+
+  * Ensure `can0` interface is properly configured and enabled on your system.([Stack Overflow][1])
 
 ---
 
-## Setup & Build Instructions
+## Installation
 
-1. **Clone the repository**
-
-   ```bash
-   git clone <repo_url>
-   cd ecu_simulator_hybrid
-````
-
-2. **Build the C shared library**
+1. **Clone the Repository**
 
    ```bash
+   git clone https://github.com/yourusername/ecu-simulator.git
+   cd ecu-simulator
+   ```
+
+
+
+2. **Build the C Shared Library**
+
+   Navigate to the `ecu/` directory and compile the C code:
+
+   ```bash
+   cd ecu
    make
    ```
 
-   This will compile `ecu_logic.c` and produce `libecu.so` in the `ecu/` folder.
 
-3. **Run the simulator**
+
+This will compile `ecu_logic.c` and produce `libecu.so` in the `ecu/` folder.
+
+3. **Install Python Dependencies**
+
+   ```bash
+   pip install python-can
+   ```
+
+
+
+---
+
+## Usage
+
+1. **Configure CAN Interface**
+
+   Ensure that the `can0` interface is up and running. You can use tools like `can-utils` to set up virtual CAN interfaces if needed.
+
+2. **Run the Simulator**
+
+   From the project root directory:
 
    ```bash
    python3 main.py
    ```
 
-   The script listens on `can0` interface, processes incoming CAN messages, and sends appropriate ECU responses.
+
+
+The script listens on the `can0` interface, processes incoming CAN messages, and sends appropriate ECU responses.
 
 ---
 
-## File Descriptions
+## File Structure
 
-* **ecu/ecu\_logic.c / ecu\_logic.h**
-  Contains core ECU logic implemented in C, including PID response generation.
-
-* **ecu\_wrapper.py**
-  Python wrapper using `ctypes` to call the C functions.
-
-* **main.py**
-  Python script managing CAN communication, receiving messages, calling C logic, and sending responses.
-
-* **Makefile**
-  Automates building the C shared library.
+* `ecu/ecu_logic.c` / `ecu_logic.h`: Contains core ECU logic implemented in C, including PID response generation.
+* `ecu_wrapper.py`: Python wrapper using `ctypes` to call the C functions.
+* `main.py`: Python script managing CAN communication, receiving messages, calling C logic, and sending responses.
+* `Makefile`: Automates building the C shared library.
 
 ---
 
 ## Notes
 
-* Ensure `can0` interface is properly configured and enabled on your system.
 * Modify `main.py` CAN interface settings if you use a different CAN backend or channel.
 * This hybrid design allows easy extension by adding more ECU logic in C while keeping CAN communication in Python.
 
@@ -96,17 +103,13 @@ README.md                 # This file
 
 ## License
 
-MIT License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
 ## Contact
 
-For any questions or contributions, please open an issue or contact \[Your Name] at \[[your.email@example.com](mailto:your.email@example.com)].
-
-```
+For any questions or contributions, please open an issue or contact [Your Name](mailto:your.email@example.com).
 
 ---
 
-Would you like me to generate a ready-to-commit `README.md` file you can download directly?
-```
