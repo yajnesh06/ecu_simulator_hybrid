@@ -109,7 +109,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Contact
 
-For any questions or contributions, please open an issue or contact [Your Name](mailto:your.email@example.com).
+For any questions or contributions, please open an issue or contact YajneshAT(mailto:your.email@example.com).
 
 ---
 
