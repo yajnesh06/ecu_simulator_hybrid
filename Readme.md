@@ -105,11 +105,7 @@ The script listens on the `can0` interface, processes incoming CAN messages, and
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
----
 
-## Contact
-
-For any questions or contributions, please open an issue or contact YajneshAT(mailto:your.email@example.com).
 
 ---
 
